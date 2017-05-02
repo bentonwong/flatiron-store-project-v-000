@@ -1,0 +1,6 @@
+<% if item.inventory > 0 %>
+  <%= render partial: 'layouts/itemprice', locals: {item: item} %>
+    <% if current_user %>
+      <%= button_to 'Add to Cart', line_items_path(item_id: item.id) if user_signed_in? %><br>
+    <% end %>
+<% end %>

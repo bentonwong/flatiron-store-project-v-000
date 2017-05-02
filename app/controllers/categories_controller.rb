@@ -8,5 +8,4 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(id: params[:id])
   end
 
-
 end

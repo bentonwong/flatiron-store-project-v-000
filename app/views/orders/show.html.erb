@@ -1,5 +1,6 @@
 <% if notice %>
-  <p><%= notice %></p> 
+  <p><%= notice %></p>
 <% end %>
 
-Order Status: <%= @order.status %>
+<h3>Order ID: <%= @order.id %></h3>
+<p>Order Status: <%= @order.status.blank? ? "Please call customer support." : "#{@order.status}" %></p>

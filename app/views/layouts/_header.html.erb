@@ -1,12 +1,11 @@
-<h1>Flatiron Store</h1>
+<h1>Rails Flatiron Store</h1>
 <nav class="">
     <ul>
-        <%= link_to "Store Home", store_path %>
+        <%= link_to "Store Home", store_path %> |
         <% if current_user %>
-            | <%= link_to "Cart", cart_path(current_cart) if current_cart %> | <%= "Signed in as #{current_user.email}" %> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            <%= !current_cart.nil? ? (link_to "Cart (#{current_cart.cart_item_count})", cart_path(current_cart)) : "Cart (0)" %> | <%= "Signed in as #{current_user.email}" %> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
         <% else %>
-            <%= link_to "sign in", new_user_session_path %><br>
-            <%= link_to "Sign up", new_user_registration_path %>
+            <%= link_to "sign in", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %>
         <% end %>
 
     </ul>

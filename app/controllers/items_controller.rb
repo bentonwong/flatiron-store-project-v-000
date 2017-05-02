@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-  def create
-
+  def show
+    @item = Item.find_by(id: params[:id])
   end
 
 end

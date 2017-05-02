@@ -1,2 +1,2 @@
-<h1><%= @item.title %></h1>
-<h2>$ <%= @item.price %></h2>
+<h3>Item</h3>
+<%= render partial: 'layouts/merchandise', locals: {item: @item} %>

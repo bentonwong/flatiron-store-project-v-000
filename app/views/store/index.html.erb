@@ -3,10 +3,7 @@
   <%= link_to category.title, category_path(category) %>
 <% end %>
 
-
 <br><h3>Items</h3>
 <% @items.each do |item| %>
-  <% if item.inventory > 0 %>
-    <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> <%= button_to 'Add to Cart', line_items_path(item_id: item.id) %></p>
-  <% end %>
+  <p><%= render partial: 'layouts/merchandise', locals: {item: item} %></p>
 <% end %>

@@ -1,12 +1,7 @@
-<h1><%= @category.title %></h1>
+<h3><%= @category.title %></h3>
 
 <ul>
 <% @category.items.each do |item| %>
-    <li><%= link_to item.title, item_path(item) %> | $<%= item.price.to_f/100 %></li>
-    <% if current_user %>
-      <%= form_tag "line_items/#{item.id}" do %>
-        <%= submit_tag "Add to Cart" %>
-      <% end %>
-    <% end %>
+  <p><%= render partial: 'layouts/merchandise', locals: {item: item} %></p>
 <% end %>
 </ul>

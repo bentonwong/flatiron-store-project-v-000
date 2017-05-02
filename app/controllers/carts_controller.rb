@@ -5,15 +5,10 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    LineItem.where("cart_id = ?", params[:id]).each do |line_item|
-      item = Item.find_by(id: line_item.item_id)
-      item.inventory  -= line_item.quantity
-      item.save
-    end
-    user = current_user
-    user.current_cart_id = nil
-    user.save
-    redirect_to cart_path(user.carts.last)
+    reduce_inventory(params[:id])
+    update_cart_status
+    nil_current_cart
+    redirect_to cart_path(current_user.carts.last)
   end
 
 end
